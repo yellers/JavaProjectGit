@@ -15,7 +15,7 @@ import org.zerock.persistence.MemberDAO;
 public class MemberDAOTest {
 
 	@Inject
-	private MemberDAO dao;
+	private MemberDAO dao; //해당 인터페이스에 맞는 new 객체 할당. 인터페이스 이므로 구현된 MembberDAOImpli가 들어가 것이다.
 	
 	@Test
 	public void testTime()throws Exception{

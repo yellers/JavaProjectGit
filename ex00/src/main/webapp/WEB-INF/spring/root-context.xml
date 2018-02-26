@@ -28,11 +28,10 @@
 	          <!-- url에서 log4jdbc를 중간에 추가함 .마이바티스에서 자세한 로그를 보기 위해 -->
 	          
 	  <property name="username" value="zerock"></property>
-	  <property name="password" value="zerock"></property>
-		 	  
+	  <property name="password" value="zerock"></property>		 	  
 	</bean>
 		
-	<!-- 스프링과 Myatis 연동을 위한 Connection 생성 클래스인 sqlSessionFactory 등록-->
+	<!-- 스프링과 Myatis 연동을 위한 Connection 생성 클래스인 sqlSessionFactory 등록 (클래스이다) -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"> <!--  클래스 이름은 MyBatis-Spring 모듈을 다운받아야만 사용가능 -->
 	
 		<property name="dataSource" ref="dataSource"></property><!-- 위의 데이터 소스를 참고 -->
@@ -43,11 +42,10 @@
 		<property name="mapperLocations" 
 		value="classpath:mappers/**/*Mapper.xml"></property>
 	</bean>		
-		
 			
     <!-- DAO는 나중에 데이터베이스가 바뀌거나 할때 사용하는 인터페이스 파일인데  
-	위의 sqlSessionFactory 클래스를 사용하면 open close 등 코드가 복잡해짐 때문에 간단히 코딩하기 위해 
-	SqlSessionTemplate 가 필요하며 이것은 mybatis-spring에서 제공함 코드에서는  slqSession 인 id 명으로 호출-->
+	위의 sqlSessionFactory 클래스를 사용할수 도 있지만 open close 등 코드가 복잡해짐 때문에 간단히 코딩하기 위해 추가로
+	SqlSessionTemplate를 사용할수 있으며 이것은 mybatis-spring에서 제공함 코드에서는  slqSession 인 id 명으로 호출-->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" 
    destroy-method="clearCache">
 		<!-- 위쪽의 sqlSessionFactory를 참조 -->
